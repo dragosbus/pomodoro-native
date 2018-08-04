@@ -16,7 +16,12 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     textTimer: {
-        fontSize: 40
+        fontSize: 40,
+        borderWidth: 3,
+        borderColor: 'rgba(225, 225, 232, 0.6)',
+        textAlign: 'center',
+        padding: 50,
+        borderRadius: 100
     }
 });
 

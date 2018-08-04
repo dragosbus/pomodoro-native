@@ -5,6 +5,7 @@ const BasicButtons = props => {
     return (
         <TouchableOpacity 
             style={[styles.btn, props.btnStyle]}
+            onPress={props.btnType}
         >
             <Text style={styles.textBtn}>
                 {props.title}
@@ -16,9 +17,9 @@ const BasicButtons = props => {
 const WrapperButtons = props => {
     return (
         <View style={styles.container}>
-            <BasicButtons btnStyle={styles.startBtn} title={'Start'}/>
-            <BasicButtons btnStyle={styles.stopBtn} title={'Stop'}/>
-            <BasicButtons btnStyle={styles.resetBtn} title={'Reset'}/>
+            <BasicButtons btnStyle={styles.startBtn} title={'Start'} btnType={props.startBtn}/>
+            <BasicButtons btnStyle={styles.stopBtn} title={'Stop'} btnType={props.stopBtn}/>
+            <BasicButtons btnStyle={styles.resetBtn} title={'Reset'} btnType={props.resetBtn}/>
         </View>
     );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
+import TimerMixin from 'react-timer-mixin';
 
 import Timer from './components/Timer';
 import WorkSlider from './components/Sliders';
@@ -9,25 +10,50 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      timer: 0,
+      workTimer: 0,
       activeTimer: 'work'
     }
     this.changeTimer = this.changeTimer.bind(this);
+    this.decrementCounter = this.decrementCounter.bind(this);
+    this.startTimer = this.startTimer.bind(this);
+    this.stopTimer = this.stopTimer.bind(this);
+    this.resetTimer = this.resetTimer.bind(this);
+  }
+
+  decrementCounter() {
+    this.setState({workTimer: this.state.workTimer - 1})
   }
 
   changeTimer(value) {
-    this.setState({timer: value})
+    this.setState({workTimer: parseInt(value)})
+  }
+
+  startTimer() {
+    Alert.alert('TImer', '5')
+    this.interval = setInterval(this.decrementCounter, 1000);
+  }
+
+  stopTimer() {
+    clearInterval(this.interval);
+  }
+
+  resetTimer() {
+    this.setState({workTimer: 0})
   }
 
   render() {
     return (
       <View style={styles.container}>
-       <Timer timer={this.state.timer}/>
+       <Timer timer={this.state.workTimer}/>
        <WorkSlider 
         changeWorkTimerHandler={this.changeTimer}
         workTimer={this.state.workTimer}
        />
-       <WrapperButtons/>
+       <WrapperButtons
+        startBtn = {this.startTimer}
+        stopBtn = {this.stopTimer}
+        resetBtn = {this.resetTimer}
+       />
       </View>
     );
   }
