@@ -45,12 +45,11 @@ export default class App extends React.Component {
     workTimer = workTimer * 60;
     
     let hour = Math.floor(workTimer / 3600);
-    hour = hour < 10 ? `0${hour}` : `${hour}`;
-
-    let minute = workTimer / 60 * Math.floor(workTimer / 3600);
-    minute = minute < 10 ? `0${minute}` : `${minute}`;
-
+    let minute = Math.floor(timer / 60) - (hour * 60);
     let seconds = workTimer % 60;
+    //convert them to string
+    hour = hour < 10 ? `0${hour}` : `${hour}`;
+    minute = minute < 10 ? `0${minute}` : `${minute}`;
     seconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
 
     let clock = `${hour}:${minute}:${seconds}`;
