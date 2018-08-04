@@ -1,18 +1,33 @@
 import React from 'react';
 import {View,Text,Slider, StyleSheet} from 'react-native';
 
-const WorkSLider = props => {
-    return(
+const Sliders = props => {
+    return (
         <View style={styles.container}>
-            <Text>Set work time</Text>
+            <Text>{props.label}</Text>
             <Slider
-                style={styles.workSlider}
+                style={styles.slider}
                 thumbTintColor="#ea0e5e"
                 minimumTrackTintColor="#ea0e5e"
                 maximumValue={200}
-                value ={props.workTimer}
+                value ={props.timer}
                 step={1}
-                onValueChange={props.changeWorkTimerHandler}
+                onValueChange={props.changeTimer}
+            />
+        </View>
+    );
+};
+
+const WorkSLider = props => {
+    return(
+        <View style={styles.container}>
+            <Sliders
+                label='Set work timer'
+                changeTimer={props.changeWorkTimerHandler}
+            />
+            <Sliders
+                label='Set pause timer'
+                changeTimer={props.changePauseTimerHandler}
             />
         </View>
     );
@@ -26,7 +41,7 @@ const styles = StyleSheet.create({
         width: '100%',
         padding: 10,
     },
-    workSlider: {
+    slider: {
         width: '90%',
     }
 });

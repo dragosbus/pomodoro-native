@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, Alert } from 'react-native';
-import TimerMixin from 'react-timer-mixin';
 
 import Timer from './components/Timer';
 import WorkSlider from './components/Sliders';
