@@ -1,13 +1,20 @@
 import React from 'react';
-import {Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 const Timer = props => {
     return(
-        <Text style={styles.textTimer}>{props.timer}</Text>
+        <View style={styles.container}>
+            <Text style={styles.textTimer}>{props.timer}</Text>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     textTimer: {
         fontSize: 40
     }

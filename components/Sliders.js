@@ -3,7 +3,7 @@ import {View,Text,Slider, StyleSheet} from 'react-native';
 
 const WorkSLider = props => {
     return(
-        <View>
+        <View style={styles.container}>
             <Text>Set work time</Text>
             <Slider
                 style={styles.workSlider}
@@ -19,9 +19,15 @@ const WorkSLider = props => {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        padding: 10,
+    },
     workSlider: {
         width: '90%',
-
     }
 });
 

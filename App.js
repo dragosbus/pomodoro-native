@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Timer from './components/Timer';
 import WorkSlider from './components/Sliders';
+import WrapperButtons from './components/Buttons';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ export default class App extends React.Component {
         changeWorkTimerHandler={this.changeTimer}
         workTimer={this.state.workTimer}
        />
+       <WrapperButtons/>
       </View>
     );
   }
