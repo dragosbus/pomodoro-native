@@ -22,10 +22,12 @@ const WorkSLider = props => {
     return(
         <View style={styles.container}>
             <Sliders
+                timer={props.workTimer}
                 label='Set work timer'
                 changeTimer={props.changeWorkTimerHandler}
             />
             <Sliders
+                timer={props.pauseTimer}
                 label='Set pause timer'
                 changeTimer={props.changePauseTimerHandler}
             />

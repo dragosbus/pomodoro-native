@@ -10,6 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       workTimer: 0,
+      pauseTimer: 0,
       activeTimer: 'work'
     }
     this.changeTimer = this.changeTimer.bind(this);
@@ -47,11 +48,13 @@ export default class App extends React.Component {
        <WorkSlider 
         changeWorkTimerHandler={this.changeTimer}
         workTimer={this.state.workTimer}
+        pauseTimer={this.state.pauseTimer}
        />
        <WrapperButtons
         startBtn = {this.startTimer}
         stopBtn = {this.stopTimer}
         resetBtn = {this.resetTimer}
+        workTimer={this.state.workTimer}
        />
       </View>
     );
