@@ -39,7 +39,7 @@ const styles= StyleSheet.create({
         paddingRight: 20,
         marginLeft: 20,
         marginRight: 20,
-        borderRadius: 5
+        borderRadius: 100
     },
     startBtn: {
         backgroundColor: '#08d14e',

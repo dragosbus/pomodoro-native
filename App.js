@@ -29,7 +29,6 @@ export default class App extends React.Component {
   }
 
   startTimer() {
-    Alert.alert('TImer', '5')
     this.interval = setInterval(this.decrementCounter, 1000);
   }
 
@@ -42,9 +41,22 @@ export default class App extends React.Component {
   }
 
   render() {
+    let {workTimer} = this.state;
+    workTimer = workTimer * 60;
+    
+    let hour = Math.floor(workTimer / 3600);
+    hour = hour < 10 ? `0${hour}` : `${hour}`;
+
+    let minute = workTimer / 60 * Math.floor(workTimer / 3600);
+    minute = minute < 10 ? `0${minute}` : `${minute}`;
+
+    let seconds = workTimer % 60;
+    seconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+
+    let clock = `${hour}:${minute}:${seconds}`;
     return (
       <View style={styles.container}>
-       <Timer timer={this.state.workTimer}/>
+       <Timer timer={clock}/>
        <WorkSlider 
         changeWorkTimerHandler={this.changeTimer}
         workTimer={this.state.workTimer}

@@ -20,7 +20,10 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: 'rgba(225, 225, 232, 0.6)',
         textAlign: 'center',
-        padding: 50,
+        paddingTop: 50,
+        paddingBottom: 50,
+        paddingLeft: 70,
+        paddingRight: 70,
         borderRadius: 100
     }
 });
