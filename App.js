@@ -14,6 +14,7 @@ export default class App extends React.Component {
       activeTimer: 'work'
     };
     this.changeTimer = this.changeTimer.bind(this);
+    this.changePauseTimerHandler = this.changePauseTimerHandler.bind(this);
     this.decrementCounter = this.decrementCounter.bind(this);
     this.startTimer = this.startTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
@@ -21,11 +22,22 @@ export default class App extends React.Component {
   }
 
   decrementCounter() {
-    this.setState({ workTimer: this.state.workTimer - 1 });
+    if (this.state.workTimer > 0) {
+      this.setState({ workTimer: this.state.workTimer - 1 });
+    } else {
+      this.setState({
+        activeTimer: 'pause',
+        workTimer: this.state.pauseTimer - 1
+      });
+    }
   }
 
   changeTimer(value) {
-    this.setState({ workTimer: parseInt(value) });
+    this.setState({ workTimer: parseInt(value) * 60 });
+  }
+
+  changePauseTimerHandler(value) {
+    this.setState({ pauseTimer: parseInt(value) * 60 });
   }
 
   startTimer() {
@@ -42,10 +54,9 @@ export default class App extends React.Component {
 
   render() {
     let { workTimer } = this.state;
-    workTimer = workTimer * 60;
 
     let hour = Math.floor(workTimer / 3600);
-    let minute = Math.floor(timer / 60) - hour * 60;
+    let minute = Math.floor(workTimer / 60 - hour * 60);
     let seconds = workTimer % 60;
     //convert them to string
     hour = hour < 10 ? `0${hour}` : `${hour}`;
@@ -58,6 +69,7 @@ export default class App extends React.Component {
         <Timer timer={clock} />
         <WorkSlider
           changeWorkTimerHandler={this.changeTimer}
+          changePauseTimerHandler={this.changePauseTimerHandler}
           workTimer={this.state.workTimer}
           pauseTimer={this.state.pauseTimer}
         />

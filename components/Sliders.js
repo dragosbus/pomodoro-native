@@ -10,9 +10,10 @@ const Sliders = props => {
         thumbTintColor="#ea0e5e"
         minimumTrackTintColor="#ea0e5e"
         maximumValue={200}
-        value={props.timer}
+        value={props.timer / 60}
         step={1}
         onValueChange={props.changeTimer}
+        disabled={props.timer > 0}
       />
     </View>
   );
