@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as Actions from './actionCreators/actionCreators';
 
 import Timer from '../components/Timer';
 import Sliders from '../components/Sliders';
@@ -23,15 +25,18 @@ const setClock = timer => {
 class Clock extends React.Component {
 
   render() {
-    let {workTimer, pauseTimer} = this.props;
+    let {workTimer, pauseTimer, setWorkTime, setPauseTime} = this.props;
     let clock = setClock(workTimer);
     
+    console.log(this.props);
     return (
       <View style={styles.container}>
         <Timer timer={clock}/>
         <Sliders
           workTimer={workTimer}
           pauseTimer={pauseTimer}
+          changeWorkTimerHandler={setWorkTime}
+          changePauseTimerHandler={setPauseTime}
         />
         <WrapperButtons
         
@@ -55,4 +60,9 @@ const mapStateToProps = state => ({
   pauseTimer: state.pauseTimer
 });
 
-export default connect(mapStateToProps)(Clock);
+const mapDispatchToProps = dispatch => ({
+  setWorkTime: bindActionCreators(Actions.setWorkTimer, dispatch),
+  setPauseTime: bindActionCreators(Actions.setPauseTime, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Clock);

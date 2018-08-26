@@ -1,2 +1,2 @@
 export const SET_WORK_TIMER = 'SET_WORK_TIMER';
-export const SET_PAUSE_TIMES = 'SET_PAUSE_TIMER';
+export const SET_PAUSE_TIMER = 'SET_PAUSE_TIMER';

@@ -5,8 +5,8 @@ export const setWorkTimer = time => ({
     payload: time
 });
 
-export const setWorkTimer = time => ({
-    type: ActionTypes.SET_PAUSE_TIMES,
+export const setPauseTime = time => ({
+    type: ActionTypes.SET_PAUSE_TIMER,
     payload: time
 });
 
