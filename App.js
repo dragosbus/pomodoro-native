@@ -11,7 +11,8 @@ export default class App extends React.Component {
     this.state = {
       workTimer: 0,
       pauseTimer: 0,
-      activeTimer: 'work'
+      workTimerOn: false,
+      pauseTimerOn: false
     };
     this.changeTimer = this.changeTimer.bind(this);
     this.changePauseTimerHandler = this.changePauseTimerHandler.bind(this);
@@ -23,11 +24,14 @@ export default class App extends React.Component {
 
   decrementCounter() {
     if (this.state.workTimer > 0) {
-      this.setState({ workTimer: this.state.workTimer - 1 });
+      this.setState({ 
+        workTimer: this.state.workTimer - 1, 
+        workTimer: true });
     } else {
       this.setState({
-        activeTimer: 'pause',
-        workTimer: this.state.pauseTimer - 1
+        workTimer: false,
+        pauseTimerOn: true,
+        pauseTimer: this.state.pauseTimer - 1
       });
     }
   }
@@ -72,6 +76,7 @@ export default class App extends React.Component {
           changePauseTimerHandler={this.changePauseTimerHandler}
           workTimer={this.state.workTimer}
           pauseTimer={this.state.pauseTimer}
+          timerIsRunning={this.state.timerIsRunning}
         />
         <WrapperButtons
           startBtn={this.startTimer}

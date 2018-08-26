@@ -13,7 +13,7 @@ const Sliders = props => {
         value={props.timer / 60}
         step={1}
         onValueChange={props.changeTimer}
-        disabled={props.timer > 0}
+        disabled={props.timer > 0 && props.timerIsRunning}
       />
     </View>
   );
@@ -22,8 +22,8 @@ const Sliders = props => {
 const WorkSLider = props => {
   return (
     <View style={styles.container}>
-      <Sliders timer={props.workTimer} label="Set work timer" changeTimer={props.changeWorkTimerHandler} />
-      <Sliders timer={props.pauseTimer} label="Set pause timer" changeTimer={props.changePauseTimerHandler} />
+      <Sliders timer={props.workTimer} label="Set work timer" changeTimer={props.changeWorkTimerHandler} timerIsRunning={props.timerIsRunning}/>
+      <Sliders timer={props.pauseTimer} label="Set pause timer" changeTimer={props.changePauseTimerHandler} timerIsRunning={props.timerIsRunning}/>
     </View>
   );
 };
